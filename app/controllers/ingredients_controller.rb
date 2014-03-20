@@ -1,13 +1,18 @@
 class IngredientsController < ApplicationController
+  # before_action :set_item
+
   def new
     @ingredient = Ingredient.new
   end
 
   def create
-    @ingredient = Ingredient.create(ingredient_params)
+    @item = Item.find(params[:item_id])
+    @ingredient = @item.ingredients.create(ingredient_params)
 
     if @ingredient.save
+      redirect_to item_path(@item)
     else
+
     end
   end
 
@@ -28,4 +33,13 @@ class IngredientsController < ApplicationController
 
     @ingredient.destroy
   end
+
+  private
+      def ingredient_params
+        params.require(:ingredient).permit(:name, :vegan, :vegetarian, :gluten_free, :item_id)
+      end
+
+      # def set_item
+      #   @item = @ingredient.items.find(params[:id])
+      # end
 end

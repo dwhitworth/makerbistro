@@ -1,3 +1,14 @@
 <h1><%= @item.name %></h1>
-
+<ul>
 <% @item.ingredients.each do |ingredient| %>
+<li><%= ingredient.name %></li>
+<% end %>
+
+<%= simple_form_for ([@item, Ingredient.new]) do |f| %>
+<%= f.input :name %>
+<%= f.input :vegan %>
+<%= f.input :vegetarian %>
+<%= f.input :gluten_free %>
+<%= f.submit %>
+<% end %>
+</ul>
