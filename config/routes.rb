@@ -1,4 +1,5 @@
 MakerBistro::Application.routes.draw do
+  root to: 'items#index'
   resources :items do
     resources :ingredients, except: [:index]
   end

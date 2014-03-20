@@ -1,0 +1,8 @@
+<h1>All Menu Items</h1>
+<ul>
+  <% @items.each do |item| %>
+  <li>
+  <%= link_to "Items", item_path(item) %> - $<%= item.price %>
+</li>
+  <% end %>
+</ul>
