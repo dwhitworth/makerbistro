@@ -1,4 +1,4 @@
-class CreateIngredientsItems < ActiveRecord::Migration
+aclass CreateIngredientsItems < ActiveRecord::Migration
   def change
     create_table :ingredients_items do |t|
       t.references :ingredient, index: true
